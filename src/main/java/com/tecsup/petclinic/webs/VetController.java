@@ -1,7 +1,8 @@
 package com.tecsup.petclinic.webs;
 
+import com.tecsup.petclinic.mapper.VetMapper;
+import lombok.extern.slf4j.Slf4j;
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,13 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsup.petclinic.domain.VetTO;
 import com.tecsup.petclinic.entities.Vet;
 import com.tecsup.petclinic.exception.VetNotFoundException;
-import com.tecsup.petclinic.mapper.VetMapper;
 import com.tecsup.petclinic.services.VetService;
 
+@RestController
+@Slf4j
 public class VetController {
 	//@Autowired
 		private VetService vetService;
