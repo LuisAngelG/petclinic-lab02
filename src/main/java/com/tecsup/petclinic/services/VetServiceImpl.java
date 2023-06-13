@@ -3,58 +3,43 @@ package com.tecsup.petclinic.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.tecsup.petclinic.entities.Vet;
 import com.tecsup.petclinic.exception.VetNotFoundException;
 import com.tecsup.petclinic.repositories.VetRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
 public class VetServiceImpl {
+	
 	VetRepository vetRepository;
 
 	public VetServiceImpl (VetRepository vetRepository) {
 		this. vetRepository = vetRepository;
 	}
 
-
-	/**
-	 * 
-	 * @param pet
-	 * @return
-	 */
-	@Override
+	//@Override
 	public Vet create(Vet vet) {
 		return vetRepository.save(vet);
 	}
 
-	/**
-	 * 
-	 * @param pet
-	 * @return
-	 */
-	@Override
+	//@Override
 	public Vet update(Vet vet) {
 		return vetRepository.save(vet);
 	}
 
-
-	/**
-	 * 
-	 * @param id
-	 * @throws PetNotFoundException
-	 */
-	@Override
+	//@Override
 	public void delete(Integer id) throws VetNotFoundException{
 
 		Vet vet = findById(id);
 		vetRepository.delete(vet);
 
 	}
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@Override
+	
+	//@Override
 	public Vet findById(Integer id) throws VetNotFoundException {
 
 		Optional<Vet> vet = vetRepository.findById(id);
@@ -64,13 +49,8 @@ public class VetServiceImpl {
 			
 		return vet.get();
 	}
-
-	/**
-	 * 
-	 * @param name
-	 * @return
-	 */
-	@Override
+	
+	//@Override
 	public List<Vet> findByFirstName(String firstName) {
 
 		List<Vet> vets = vetRepository.findByFirstName(firstName);
@@ -80,44 +60,10 @@ public class VetServiceImpl {
 		return vets;
 	}
 
-	/**
-	 * 
-	 * @param typeId
-	 * @return
-	 */
-	@Override
-	public List<Pet> findByTypeId(int typeId) {
-
-		List<Pet> pets = petRepository.findByTypeId(typeId);
-
-		pets.stream().forEach(pet -> log.info("" + pet));
-
-		return pets;
-	}
-
-	/**
-	 * 
-	 * @param ownerId
-	 * @return
-	 */
-	@Override
-	public List<Pet> findByOwnerId(int ownerId) {
-
-		List<Pet> pets = petRepository.findByOwnerId(ownerId);
-
-		pets.stream().forEach(pet -> log.info("" + pet));
-
-		return pets;
-	}
-
-	/**
-	 *
-	 * @return
-	 */
-	@Override
-	public List<Pet> findAll() {
+	//@Override
+	public List<Vet> findAll() {
 		//
-		return petRepository.findAll();
+		return vetRepository.findAll();
 
 	}
 }

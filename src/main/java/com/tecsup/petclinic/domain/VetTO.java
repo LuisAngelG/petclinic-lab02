@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class VetTO {
 
 	private Integer id;
-	private String first_name;
-	private String last_name;
+	private String firstName;
+	private String lastName;
 	
 }

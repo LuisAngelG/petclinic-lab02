@@ -17,10 +17,10 @@ public interface VetRepository
 	extends CrudRepository<Vet, Integer> {
 
 	// Fetch pets by name
-	List<Vet> findByFirst_name(String first_name);
+	List<Vet> findByFirstName(String firstName);
 
 	// Fetch pets by typeId
-	List<Vet> findByLast_name(int last_name);
+	List<Vet> findByLastName(int lastName);
 
 	@Override
 	List<Vet> findAll();

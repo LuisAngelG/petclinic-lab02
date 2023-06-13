@@ -79,6 +79,11 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>com.tecsup</groupId>
+			<artifactId>PetClinic</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>

@@ -30,11 +30,6 @@ public class VetController {
 			this.mapper = mapper ;
 		}
 
-		/**
-		 * Get all pets
-		 *
-		 * @return
-		 */
 		@GetMapping(value = "/vets")
 		public ResponseEntity<List<VetTO>> findAllVets() {
 
@@ -61,8 +56,8 @@ public class VetController {
 		@ResponseStatus(HttpStatus.CREATED)
 		ResponseEntity<VetTO> create(@RequestBody VetTO vetTO) {
 
-			Pet newVet = this.mapper.toVet(vetTO);
-			PetTO newVetTO = this.mapper.toVetTO(vetService.create(newVet));
+			Vet newVet = this.mapper.toVet(vetTO);
+			VetTO newVetTO = this.mapper.toVetTO(vetService.create(newVet));
 
 			return  ResponseEntity.status(HttpStatus.CREATED).body(newVetTO);
 
@@ -108,15 +103,14 @@ public class VetController {
 
 				Vet updateVet = vetService.findById(id);
 
-				updateVet.setName(vetTO.getName());
-				updateVet.setOwnerId(vetTO.getOwnerId());
-				updateVet.setTypeId(vetTO.getTypeId());
+				updateVet.setFirstName(vetTO.getFirstName());
+				updateVet.setLastName(vetTO.getLastName());
 
 				vetService.update(updateVet);
 
 				updateVetTO = this.mapper.toVetTO(updateVet);
 
-			} catch (PetNotFoundException e) {
+			} catch (VetNotFoundException e) {
 				return ResponseEntity.notFound().build();
 			}
 
